@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.mysns.mappers.follow">
+
+	<resultMap type="followVO" id="followResult">
+		<result column="followee_id" property="followeeId" />
+		<result column="follower_id" property="followerId" />
+		<result column="created_at" property="createdAt" />
+	</resultMap>
+<!--  
+	<resultMap type="feedVO" id="feedResult">
+		<result column="user_id" property="userId" />
+		<result column="followee_id" property="followeeId" />
+		<result column="post_id" property="postId" />
+		<result column="created_at" property="createdAt" />
+	</resultMap>
+
+
+	<resultMap type="postVO" id="postResult">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="created_at" property="createdAt" />
+	</resultMap>
+	
+	<resultMap type="userVO" id="UserNoPw">
+		<result column="user_id" property="id" />
+		<result column="username" property="username" />
+		<result column="created_at" property="userCreatedAt" />
+	</resultMap>
+	
+	<resultMap type="postAndUserVO" id="postAndUserResult">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="created_at" property="createdAt" />
+		<association property="user" resultMap="UserNoPw"></association>
+	</resultMap>-->
+
+	<insert id="followUser" parameterType="followVO">
+		<![CDATA[
+			INSERT INTO follow(followee_id, follower_id) 
+			VALUES(#{followeeId},#{followerId})
+		]]>
+	</insert>
+
+	<delete id="unfollowUser" parameterType="followVO">
+		<![CDATA[
+			DELETE FROM follow 
+			WHERE followee_id=#{followeeId} AND follower_id=#{followerId}
+		]]>
+	</delete>
+	
+	<select id="findFollowersByFollowee" resultMap="followResult"
+		parameterType="Long">
+		<![CDATA[
+			SELECT followee_id, follower_id, created_at
+			FROM follow
+			WHERE followee_id=#{followeeId} ORDER BY created_at DESC;
+		]]>
+	</select>
+
+</mapper>

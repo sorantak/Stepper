@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.mysns.mappers.post">
+
+	<resultMap type="postVO" id="postResult">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="created_at" property="createdAt" />
+	</resultMap>
+
+	<resultMap type="postAndUserVO" id="postAndUserResult">
+		<result column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="created_at" property="createdAt" />
+		<association property="user" resultMap="UserNoPw"></association>
+	</resultMap>
+
+	<resultMap type="userVO" id="UserNoPw">
+		<result column="user_id" property="id" />
+		<result column="username" property="username" />
+		<result column="created_at" property="createdAt" />
+		<result column="isFollow" property="isFollow" />
+	</resultMap>
+
+	<insert id="savePost" parameterType="postVO" keyProperty="id"
+		useGeneratedKeys="true">
+		<![CDATA[
+			INSERT INTO post(user_id, title, content) 
+			VALUES(#{userId}, #{title}, #{content})
+		]]>
+	</insert>
+
+	<select id="findPostById" resultMap="postResult"
+		parameterType="Long">
+		<![CDATA[
+			SELECT * FROM post 
+			WHERE id=#{id} ORDER BY id DESC;
+		]]>
+	</select>
+
+	<select id="findAllPost" resultMap="postAndUserResult">
+		<![CDATA[
+			SELECT post.id, post.user_id, post.title, post.content, post.created_at, user.id, user.username, user.created_at
+			FROM post
+			LEFT OUTER JOIN user
+			ON post.user_id = user.id
+			ORDER BY post.id DESC;
+		]]>
+	</select>
+
+	<select id="findMyPost" resultMap="postAndUserResult"
+		parameterType="Long">
+		<![CDATA[
+			SELECT post.id, post.user_id, post.title, post.content, post.created_at, user.id, user.username, user.created_at
+			FROM post
+			LEFT OUTER JOIN user
+			ON post.user_id = user.id
+			WHERE user.id=#{userId}
+			ORDER BY post.id DESC;
+		]]>
+	</select>
+
+	<select id="PostDetailById" resultMap="postAndUserResult"
+		parameterType="Long">
+		<![CDATA[
+			SELECT post.id, post.user_id, post.title, post.content, post.created_at, user.id, user.username, user.created_at
+			FROM post
+			LEFT OUTER JOIN user
+			ON post.user_id = user.id where post.id=#{id};
+		]]>
+	</select>
+
+	<delete id="deletePostById" parameterType="Long">
+		<![CDATA[
+			delete from post where id=#{id};
+		]]>
+	</delete>
+</mapper>

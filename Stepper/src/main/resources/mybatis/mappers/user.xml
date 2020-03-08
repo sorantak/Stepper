@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.mysns.mappers.user">
+
+	<resultMap type="userVO" id="userResult">
+		<result column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="created_at" property="createdAt" />
+		<result column="isFollow" property="isFollow"/>
+	</resultMap>
+
+	<resultMap type="tokenVO" id="tokenResult">
+		<result column="token" property="token" />
+		<result column="user_id" property="userId" />
+		<result column="created_at" property="createdAt" />
+	</resultMap>
+
+	<select id="findAllUsersList" resultMap="userResult">
+		<![CDATA[
+			SELECT * FROM user
+		]]>
+	</select>
+
+	<select id="findUserById" resultMap="userResult"
+		parameterType="Long">
+		<![CDATA[
+			SELECT * FROM user 
+			WHERE id=#{id} ORDER BY created_at DESC;
+		]]>
+	</select>
+
+	<insert id="saveUser" parameterType="userVO" keyProperty="id"
+		useGeneratedKeys="true">
+		<![CDATA[
+			INSERT INTO user(username, password) 
+			VALUES(#{username},#{password})
+		]]>
+	</insert>
+
+	<select id="logInByUser" resultMap="userResult"
+		parameterType="userVO">
+		<![CDATA[
+			SELECT * FROM user 
+			WHERE username=#{username} AND password=#{password}
+		]]>
+	</select>
+
+	<insert id="createToken" parameterType="tokenVO"
+		keyProperty="token" useGeneratedKeys="true">
+		<![CDATA[
+			INSERT INTO token(token, user_id)
+			VALUES(#{token}, #{userId})
+		]]>
+	</insert>
+
+	<select id="viewUserByToken" resultMap="tokenResult"
+		parameterType="String">
+		<![CDATA[
+			SELECT * FROM token
+			WHERE token=#{token} ORDER BY user_id DESC;
+		]]>
+	</select>
+
+</mapper>
