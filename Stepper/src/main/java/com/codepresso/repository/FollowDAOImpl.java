@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.codepresso.domain.FollowVO;
 
 @Repository
-public class FollowDAOImpl {
+public class FollowDAOImpl implements FollowDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(FollowDAOImpl.class);
 
@@ -20,6 +20,7 @@ public class FollowDAOImpl {
 
 	private static final String Namespace = "mybatis.mappers.follow";
 
+	@Override
 	public int followUser(FollowVO followeeIdInVO) throws Exception {
 		logger.info("call followUser()");
 
@@ -28,6 +29,7 @@ public class FollowDAOImpl {
 		return result;
 	}
 
+	@Override
 	public int unfollowUser(FollowVO followeeId) throws Exception {
 		logger.info("call unfollowUser()");
 
@@ -36,6 +38,7 @@ public class FollowDAOImpl {
 		return result;
 	}
 
+	@Override
 	public List<FollowVO> findFollowersByFollowee(Long followeeId) throws Exception {
 		logger.info("call findFollowersByFollowee()");
 		

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = "com.codepresso.**")
+@MapperScan(basePackages = "com.codepresso.domain.**")
 public class MyBatisConfig {
 
 	@Bean

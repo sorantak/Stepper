@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.codepresso.domain.FeedVO;
 
 @Repository
-public class FeedDAOImpl {
+public class FeedDAOImpl implements FeedDAO{
 
 	private static final Logger logger = LoggerFactory.getLogger(FeedDAOImpl.class);
 	
@@ -19,7 +19,8 @@ public class FeedDAOImpl {
 	private SqlSession sqlSession;
 
 	private static final String Namespace = "mybatis.mappers.feed";
-
+	
+	@Override
 	public int insertFeed(FeedVO feedVO) throws Exception {
 		logger.info("call insertFeed()");
 		
@@ -27,7 +28,8 @@ public class FeedDAOImpl {
 
 		return result;
 	}
-
+	
+	@Override
 	public List<FeedVO> findFolloweeByUser(Long userId) throws Exception {
 		logger.info("call findFolloweeByUser()");
 		
@@ -36,6 +38,7 @@ public class FeedDAOImpl {
 		return result;
 	}
 
+	@Override
 	public int deleteFeedByPostId(Long id) throws Exception {
 		logger.info("call deleteFeedByPostId()");
 		

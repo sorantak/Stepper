@@ -19,7 +19,7 @@ import com.codepresso.repository.PostDAO;
 import com.codepresso.repository.UserDAO;
 
 @Service
-public class FollowServiceImpl {
+public class FollowServiceImpl implements FollowService {
 
 	private static final Logger logger = LoggerFactory.getLogger(FollowServiceImpl.class);
 
@@ -56,6 +56,7 @@ public class FollowServiceImpl {
 	@Autowired
 	PostVO postVO;
 	
+	@Override
 	public ResponseData followUser(FollowVO followeeIdInVO, String accesstoken) throws Exception {
 		logger.info("call followUser()");
 
@@ -84,6 +85,7 @@ public class FollowServiceImpl {
 
 	}
 
+	@Override
 	public ResponseData unfollowUser(FollowVO followeeId, String accesstoken) throws Exception {
 		logger.info("call unfollowUser()");
 

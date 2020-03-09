@@ -23,7 +23,7 @@ import com.codepresso.repository.PostDAO;
 import com.codepresso.repository.UserDAO;
 
 @Service
-public class PostServiceImpl {
+public class PostServiceImpl implements PostService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(PostService.class);
 
@@ -60,6 +60,7 @@ public class PostServiceImpl {
 	@Autowired
 	FeedDAO feedDAO;
 
+	@Override
 	public ResponseData savePost(PostVO postVO, String accesstoken) throws Exception {
 
 		TokenVO userByToken = userDAO.viewUserByToken(accesstoken);
@@ -91,6 +92,7 @@ public class PostServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData findAllPost(String accesstoken) throws Exception {
 		logger.info("call findAllPost() method in PostServiceImpl");
 		List<PostAndUserVO> postList = postDAO.findAllPost();
@@ -148,6 +150,7 @@ public class PostServiceImpl {
 		}
 	}
 
+	@Override
 	public ResponseData findMyPost(String accesstoken) throws Exception {
 		logger.info("call findMyPost() method in PostServiceImpl");
 
@@ -167,6 +170,7 @@ public class PostServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData postDetailById(Long id) throws Exception {
 		logger.info("call postDetailById() method in PostServiceImpl");
 
@@ -179,6 +183,7 @@ public class PostServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData deletePostById(Long id) throws Exception {
 		logger.info("call deletePostById() method in PostServiceImpl");
 
@@ -201,6 +206,7 @@ public class PostServiceImpl {
 		return responseData;
 	}
 	
+	@Override
 	public ResponseData viewMyFeedList(String accesstoken) throws Exception {
 		logger.info("call viewMyFeedList()");
 

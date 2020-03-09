@@ -12,7 +12,7 @@ import com.codepresso.domain.TokenVO;
 import com.codepresso.domain.UserVO;
 
 @Repository
-public class UserDAOImpl {
+public class UserDAOImpl implements UserDAO{
 
 	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
 	
@@ -21,36 +21,43 @@ public class UserDAOImpl {
 	
 	private static final String Namespace = "mybatis.mappers.user";
 	
+	@Override
 	public List<UserVO> findAllUsersList() throws Exception {
 		logger.info("call findAllUsersList() method in UserDAO");
 		List<UserVO> resultList = sqlSession.selectList(Namespace + ".findAllUsersList");
 		return resultList;
 	}
 	
+	
+	@Override
 	public UserVO findUserById(Long id) throws Exception {
 		logger.info("call findUserById() method in UserDAO");
 		UserVO result = sqlSession.selectOne(Namespace + ".findUserById", id);
 		return result;
 	}
 	
+	@Override
 	public int saveUser(UserVO userVO) throws Exception {
 		logger.info("call saveUser() method in UserDAO");
 		int result = sqlSession.insert(Namespace + ".saveUser", userVO);
 		return result;
 	}
 	
+	@Override
 	public UserVO logInByUser(UserVO userVO) throws Exception {
 		logger.info("call loginByUser() method in UserDAO");
 		UserVO result = sqlSession.selectOne(Namespace + ".logInByUser", userVO);
 		return result;
 	}
 	
+	@Override
 	public int createToken(TokenVO tokenVO) throws Exception {
 		logger.info("call createToken() method in UserDAO");
 		int result = sqlSession.insert(Namespace + ".createToken", tokenVO);
 		return result;
 	}
 	
+	@Override
 	public TokenVO viewUserByToken(String token) throws Exception {
 		logger.info("call viewUserByToken() method in UserDAO");
 		TokenVO result = sqlSession.selectOne(Namespace + ".viewUserByToken", token);

@@ -17,7 +17,7 @@ import com.codepresso.repository.UserDAO;
 import com.codepresso.util.RandomToken;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService{
 
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -39,6 +39,7 @@ public class UserServiceImpl {
 	@Autowired
 	FollowDAO followDAO;
 
+	@Override
 	public ResponseData findAllUsersList() throws Exception {
 		logger.info("call findAllUsersList() method in UserService");
 		List<UserVO> userList = userDAO.findAllUsersList();
@@ -50,6 +51,7 @@ public class UserServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData findUserById(Long id) throws Exception {
 		logger.info("call findUserById() method in UserService");
 
@@ -62,6 +64,7 @@ public class UserServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData saveUser(UserVO userVO) throws Exception {
 		logger.info("call saveUser() method in UserService");
 
@@ -77,6 +80,7 @@ public class UserServiceImpl {
 		return responseData;
 	}
 
+	@Override
 	public ResponseData FindUserByToken(UserVO userVO) throws Exception {
 		logger.info("call FindUserByToken() method in UserService");
 		

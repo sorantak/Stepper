@@ -12,7 +12,7 @@ import com.codepresso.domain.PostAndUserVO;
 import com.codepresso.domain.PostVO;
 
 @Repository
-public class PostDAOImpl {
+public class PostDAOImpl implements PostDAO {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PostDAOImpl.class);
 	
@@ -21,6 +21,7 @@ public class PostDAOImpl {
 	
 	private static final String Namespace = "mybatis.mappers.post";
 	
+	@Override
 	public int savePost(PostVO postVO) throws Exception {
 		logger.info("call savePost() method in PostDAOImpl");
 		
@@ -28,6 +29,7 @@ public class PostDAOImpl {
 		return result;
 	}
 
+	@Override
 	public PostVO findPostById(Long id) throws Exception {
 		logger.info("call findPostById() method in PostDAOImpl");
 		
@@ -35,6 +37,7 @@ public class PostDAOImpl {
 		return result;
 	}
 	
+	@Override
 	public List<PostAndUserVO> findAllPost() throws Exception {
 		logger.info("call findAllPost() method in PostDAOImpl");
 		
@@ -42,6 +45,7 @@ public class PostDAOImpl {
 		return result;
 	}
 
+	@Override
 	public List<PostAndUserVO> findMyPost(Long id) throws Exception {
 		logger.info("call findMyPost() method in PostDAOImpl");
 		
@@ -49,6 +53,7 @@ public class PostDAOImpl {
 		return result;
 	}
 	
+	@Override
 	public PostAndUserVO postDetailById(Long id) throws Exception {
 		logger.info("call postDetailById() method in PostDAOImpl");
 		
@@ -56,6 +61,7 @@ public class PostDAOImpl {
 		return result;
 	}
 
+	@Override
 	public int deletePostById(Long id) throws Exception {
 		int result = sqlSession.delete(Namespace + ".deletePostById", id);
 		return result;

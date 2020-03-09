@@ -6,10 +6,10 @@ import com.codepresso.domain.FollowVO;
 
 public interface FollowDAO {
 
-	public int followUser(FollowVO followeeIdInVO);
+	public int followUser(FollowVO followeeIdInVO) throws Exception;
 
-	public int unfollowUser(FollowVO followeeId);
+	public int unfollowUser(FollowVO followeeId) throws Exception;
 	
-	public List<FollowVO> findFollowersByFollowee(Long followeeId);
+	public List<FollowVO> findFollowersByFollowee(Long followeeId) throws Exception;
 
 }
