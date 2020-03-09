@@ -20,7 +20,7 @@ public class FollowController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FollowController.class);
 
-	@Autowired
+	@Autowired(required=true)
 	private FollowService followService;
 
 	@PostMapping("")

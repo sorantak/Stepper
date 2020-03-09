@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mappers.post">
+<mapper namespace="mybatis.mappers.post">
 
 	<resultMap type="postVO" id="postResult">
 		<result column="id" property="id" />

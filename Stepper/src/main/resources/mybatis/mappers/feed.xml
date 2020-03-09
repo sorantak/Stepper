@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mappers.feed">
+<mapper namespace="mybatis.mappers.feed">
 
 	<resultMap type="feedVO" id="feedResult">
 		<result column="user_id" property="userId" />
