@@ -1,5 +1,6 @@
 package com.codepresso.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -228,7 +229,7 @@ public class PostServiceImpl {
 			postAndUserVO.setTitle(title);
 			String content = postVO.getContent();
 			postAndUserVO.setContent(content);
-			String createdAt = postVO.getCreatedAt();
+			Date createdAt = postVO.getCreatedAt();
 			postAndUserVO.setCreatedAt(createdAt);
 			userVO = userDAO.findUserById(userId);
 			postAndUserVO.setUser(userVO);

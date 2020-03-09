@@ -19,7 +19,7 @@ public class PostDAOImpl {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final String Namespace = "com.myspring.mysns.mappers.post";
+	private static final String Namespace = "mappers.post";
 	
 	public int savePost(PostVO postVO) throws Exception {
 		logger.info("call savePost() method in PostDAOImpl");

@@ -18,7 +18,7 @@ public class FeedDAOImpl {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private static final String Namespace = "com.myspring.mysns.mappers.feed";
+	private static final String Namespace = "mappers.feed";
 
 	public int insertFeed(FeedVO feedVO) throws Exception {
 		logger.info("call insertFeed()");

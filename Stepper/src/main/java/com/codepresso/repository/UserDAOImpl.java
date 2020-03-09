@@ -19,7 +19,7 @@ public class UserDAOImpl {
 	@Autowired
 	private SqlSession sqlSession; 
 	
-	private static final String Namespace = "com.myspring.mysns.mappers.user";
+	private static final String Namespace = "mappers.user";
 	
 	public List<UserVO> findAllUsersList() throws Exception {
 		logger.info("call findAllUsersList() method in UserDAO");
