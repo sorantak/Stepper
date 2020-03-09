@@ -18,7 +18,7 @@ public class FollowDAOImpl {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private static final String Namespace = "mappers.follow";
+	private static final String Namespace = "mybatis.mappers.follow";
 
 	public int followUser(FollowVO followeeIdInVO) throws Exception {
 		logger.info("call followUser()");

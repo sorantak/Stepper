@@ -18,7 +18,7 @@ public class FeedDAOImpl {
 	@Autowired
 	private SqlSession sqlSession;
 
-	private static final String Namespace = "mappers.feed";
+	private static final String Namespace = "mybatis.mappers.feed";
 
 	public int insertFeed(FeedVO feedVO) throws Exception {
 		logger.info("call insertFeed()");
