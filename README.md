@@ -28,16 +28,12 @@ Eclipse - Help - Eclipse Marketplace - Spring Tool 3 Add-On for Spring Tools 4 3
 # 사용된 기술  
 * Spring Boot  
 * JPA  
-* FreeMarker
+* FreeMarker  
 
-# 실행방법
-- jar로 패키징 한 다음 java -jar 로 실행하는 방법 작성
-- mvn 명령어로 실행하는 방법 작성
+# 정보  
+탁한솔  
+takyhsoul@gmail.com  
+https://soranta.tistory.com/  
 
-# 정보
-탁한솔
-takyhsoul@gmail.com
-https://soranta.tistory.com/
-
-# 라이센스
-© 2020 Codepresso
+# 라이센스  
+© 2020 Codepresso  
