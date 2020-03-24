@@ -27,7 +27,7 @@ Eclipse - Help - Eclipse Marketplace - Spring Tool 3 Add-On for Spring Tools 4 3
 
 # 사용된 기술  
 * Spring Boot  
-* JPA  
+* MyBatis  
 * FreeMarker  
 
 # 정보  
